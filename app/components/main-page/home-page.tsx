@@ -10,7 +10,7 @@ export const HomePage = () => {
         <Search />
         <Filter />
       </section>
-      <section>
+      <section className="p-8">
         <SROnly>List of countries</SROnly>
         <Country />
       </section>
