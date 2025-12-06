@@ -1,5 +1,5 @@
-import { ColorsHelper } from "./components/shared/ColorsHelper";
+import { HomePage } from "./components/main-page/home-page";
 
 export default function Home() {
-  return <ColorsHelper />;
+  return <HomePage />;
 }
