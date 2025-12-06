@@ -4,4 +4,4 @@ export default function getMemo() {
   return JSON.parse(item) as Record<string, unknown>;
 }
 
-export const memoName = "sog-app";
+export const memoName = process.env.NEXT_PUBLIC_APP_NAME || "my-app";
