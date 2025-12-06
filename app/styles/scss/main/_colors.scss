@@ -3,38 +3,58 @@
 @use "sass:map";
 
 $colorsMap: (
-  // Primary
-  red: 4 69% 50%,
-  lime: 61 70% 52%,
-  lime-accent: 62 65% 35%,
-  // Neutral
-  white: 0 0% 100%,
-  slate-100: 202 86% 94%,
-  slate-300: 203 41% 72%,
-  slate-500: 200 26% 54%,
-  slate-700: 200 24% 40%,
-  slate-900: 202 55% 16%,
-  slate-950: 202 55% 13%
+  blue-900: 209 23% 22%,
+  blue-950: 207 26% 17%,
+  grey-950: 200 15% 8%,
+  grey-400: 0 0% 50%,
+  grey-50: 0 0% 99%,
+  white: 0 100% 100%,
 );
 
-$primary-color: map.get($colorsMap, slate-100);
-$link-color: map.get($colorsMap, lime);
-$text-color: map.get($colorsMap, slate-900);
-$accent-color: map.get($colorsMap, lime-accent);
+$primary-color: map.get($colorsMap, grey-50);
+$link-color: map.get($colorsMap, blue-950);
+$text-color: map.get($colorsMap, grey-950);
+$accent-color: map.get($colorsMap, blue-950);
 
 :root {
-  --background: #{$primary-color};
-  --foreground: #{$text-color};
-  --accent-color: #{$accent-color};
-  --link-color: #{$link-color};
-  @media (prefers-color-scheme: dark) {
-    // --background: #{$text-color};
-    // --foreground: #{$primary-color};
-  }
   & {
     @each $name, $color in $colorsMap {
       --#{""+$name}: #{$color};
     }
+  }
+  --background: var(--grey-50);
+  --foreground: var(--grey-950);
+  --accent-color: #{$accent-color};
+  --link-color: #{$link-color};
+
+  // project specific
+  --element-bg: var(--white);
+  --input: var(--grey-400);
+  @media (prefers-color-scheme: dark) {
+    --background: var(--blue-950);
+    --foreground: var(--white);
+
+    // project specific
+    --element-bg: var(--blue-900);
+    --input: var(--element-bg);
+  }
+  [theme="dark"] {
+    --background: var(--blue-950);
+    --foreground: var(--white);
+
+    // project specific
+    --element-bg: var(--blue-900);
+    --input: var(--element-bg);
+  }
+  [theme="light"] {
+    --background: var(--grey-50);
+    --foreground: var(--grey-950);
+    --accent-color: #{$accent-color};
+    --link-color: #{$link-color};
+
+    // project specific
+    --element-bg: var(--white);
+    --input: var(--grey-400);
   }
 }
 
