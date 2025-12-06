@@ -27,12 +27,18 @@ export const ColorsHelper = () => {
       </label>
 
       <ul>
-        {sassColors.map(([name, color]) => (
-          <li key={name}>
-            {removeNameDetails(name).trim().replaceAll(" ", "-").toLowerCase()}:
-            {color},
-          </li>
-        ))}
+        {sassColors.map(
+          ([name, color]) =>
+            name && (
+              <li key={name}>
+                {removeNameDetails(name)
+                  .trim()
+                  .replaceAll(" ", "-")
+                  .toLowerCase()}
+                :{color},
+              </li>
+            )
+        )}
       </ul>
     </section>
   );
