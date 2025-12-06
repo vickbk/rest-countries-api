@@ -38,7 +38,8 @@ $accent-color: map.get($colorsMap, blue-950);
     --element-bg: var(--blue-900);
     --input: var(--element-bg);
   }
-  [theme="dark"] {
+  &[theme="dark"],
+  *[theme="dark"] {
     --background: var(--blue-950);
     --foreground: var(--white);
 
@@ -46,7 +47,8 @@ $accent-color: map.get($colorsMap, blue-950);
     --element-bg: var(--blue-900);
     --input: var(--element-bg);
   }
-  [theme="light"] {
+  &[theme="light"],
+  *[theme="light"] {
     --background: var(--grey-50);
     --foreground: var(--grey-950);
     --accent-color: #{$accent-color};

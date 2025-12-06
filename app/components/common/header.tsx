@@ -1,22 +1,35 @@
 "use client";
 import { useEffect, useState } from "react";
 import { CommonContainer } from "./common-container";
+import setMemoItem from "@/app/lib/memorization/set-item";
+import getMemoItem from "@/app/lib/memorization/get-item";
+import { SROnly } from "../shared/SROnly";
 
 export const Header = () => {
   const [darkTheme, setDarkTheme] = useState(false);
   useEffect(() => {
-    const prefersDark = window.matchMedia(
-      "(prefers-color-scheme: dark)"
-    ).matches;
-    console.log(prefersDark);
+    let savedTheme = getMemoItem<"light" | "dark" | undefined>("theme");
+    if (!savedTheme)
+      savedTheme = window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light";
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setDarkTheme(savedTheme === "dark");
+  }, []);
+  useEffect(() => {
+    setMemoItem("theme", darkTheme ? "dark" : "light");
+    document.documentElement.setAttribute(
+      "theme",
+      darkTheme ? "dark" : "light"
+    );
   }, [darkTheme]);
   return (
     <header>
       <CommonContainer className="flex justify-between">
         <h1>Where in the world?</h1>
         <button type="button" onClick={() => setDarkTheme(!darkTheme)}>
-          <i className="bi bi-moon"></i>
-          Dark Mode
+          <i className={`bi bi-${darkTheme ? "sun" : "moon-fill"}`}></i>
+          <SROnly>Switch to</SROnly> {darkTheme ? "Light" : "Dark"} Mode
         </button>
       </CommonContainer>
     </header>
