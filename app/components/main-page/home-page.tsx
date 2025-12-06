@@ -1,5 +1,13 @@
-import { Header } from "../common/header";
+import { Filter } from "./filter";
+import { Search } from "./search";
 
 export const HomePage = () => {
-  return <Header></Header>;
+  return (
+    <>
+      <section>
+        <Search />
+        <Filter />
+      </section>
+    </>
+  );
 };

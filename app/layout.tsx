@@ -3,6 +3,7 @@ import { Nunito_Sans } from "next/font/google";
 import "./styles/scss/global.scss";
 import "./styles/global.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
+import { Header } from "./components/common/header";
 
 const nunitoSans = Nunito_Sans({
   variable: "--font-nunito-sans",
@@ -25,7 +26,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${nunitoSans.variable} antialiased`}>{children}</body>
+      <body className={`${nunitoSans.variable} antialiased`}>
+        <Header />
+        <main className="grid items-center grow">{children}</main>
+      </body>
     </html>
   );
 }

@@ -24,7 +24,7 @@ export const Header = () => {
     );
   }, [darkTheme]);
   return (
-    <header>
+    <header className="">
       <CommonContainer className="flex justify-between">
         <h1>Where in the world?</h1>
         <button type="button" onClick={() => setDarkTheme(!darkTheme)}>

@@ -53,7 +53,7 @@ body {
   color: hsl(var(--foreground));
   font-family: var(--ff-sans);
   line-height: 1.6;
-  @apply min-h-screen grid place-items-center;
+  @apply min-h-screen flex flex-col transition-colors duration-300;
 }
 
 button {
