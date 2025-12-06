@@ -1,4 +1,4 @@
-import { ColorsHelper } from "./components/ColorsHelper";
+import { ColorsHelper } from "./components/shared/ColorsHelper";
 
 export default function Home() {
   return <ColorsHelper />;
