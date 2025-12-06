@@ -1,5 +1,7 @@
+import { DetailsPage } from "../components/details/details-page";
+
 const Page = async () => {
-  return <>Country page</>;
+  return <DetailsPage />;
 };
 
 export default Page;
