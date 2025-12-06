@@ -6,7 +6,7 @@ import { Search } from "./search";
 export const HomePage = () => {
   return (
     <>
-      <section>
+      <section className="my-8 flex flex-wrap gap-8">
         <Search />
         <Filter />
       </section>
