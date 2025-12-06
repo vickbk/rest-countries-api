@@ -1,0 +1,14 @@
+@use "../globals/" as g;
+@use "../functions/" as f;
+@use "font";
+
+.container {
+  min-block-size: 100vh;
+  display: grid;
+  place-items: center;
+  @include g.mobile-queries(g.$tablet) {
+    &__holder {
+      max-inline-size: f.to-r-em(1200);
+    }
+  }
+}

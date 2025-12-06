@@ -1,0 +1,28 @@
+@use "../globals/states" as states;
+@use "../functions/to-r-em" as f;
+
+.detailed {
+  &__input {
+    @include states.active-state {
+      outline-color: hsl(var(--lime));
+      border-color: hsl(var(--lime));
+      & + .detailed__span {
+        background-color: hsl(var(--lime));
+      }
+    }
+  }
+}
+
+.labelled-radio {
+  @include states.active-state {
+    cursor: pointer;
+  }
+  &__input {
+    @include states.active-state {
+      outline: none;
+    }
+  }
+  &:has(&__input:hover, &__input:active, &__input:focus, &__input:checked) {
+    background-color: hsl(var(--lime) / 0.1);
+  }
+}

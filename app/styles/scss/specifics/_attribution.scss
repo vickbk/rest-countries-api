@@ -1,0 +1,11 @@
+@use "../main/colors" as c;
+@use "../globals/states";
+@use "../functions/" as f;
+.attribution {
+  font-size: f.to-r-em(15);
+  text-align: center;
+  a {
+    color: var(--link-color);
+    text-decoration: underline;
+  }
+}

@@ -1,0 +1,21 @@
+@keyframes hideShow {
+  from {
+    opacity: 0;
+    display: none;
+  }
+  to {
+    opacity: auto;
+    display: inherit;
+  }
+}
+
+@keyframes disappear {
+  from {
+    display: inherit;
+    opacity: auto;
+  }
+  to {
+    display: none;
+    opacity: 0;
+  }
+}

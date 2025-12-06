@@ -1,0 +1,95 @@
+.light-red {
+  background-color: hsl(var(--light-red) / var(--bg-accent, 1));
+}
+
+.c-light-red {
+  color: hsl(var(--light-red) / var(--txt-accent, 1));
+}
+
+.orangey-yellow {
+  background-color: hsl(var(--orangey-yellow) / var(--bg-accent, 1));
+}
+
+.c-orangey-yellow {
+  color: hsl(var(--orangey-yellow) / var(--txt-accent, 1));
+}
+
+.green-teal {
+  background-color: hsl(var(--green-teal) / var(--bg-accent, 1));
+}
+
+.c-green-teal {
+  color: hsl(var(--green-teal) / var(--txt-accent, 1));
+}
+
+.cobalt-blue {
+  background-color: hsl(var(--cobalt-blue) / var(--bg-accent, 1));
+}
+
+.c-cobalt-blue {
+  color: hsl(var(--cobalt-blue) / var(--txt-accent, 1));
+}
+
+.light-slate-blue {
+  background-color: hsl(var(--light-slate-blue) / var(--bg-accent, 1));
+}
+
+.c-light-slate-blue {
+  color: hsl(var(--light-slate-blue) / var(--txt-accent, 1));
+}
+
+.light-royal-blue {
+  background-color: hsl(var(--light-royal-blue) / var(--bg-accent, 1));
+}
+
+.c-light-royal-blue {
+  color: hsl(var(--light-royal-blue) / var(--txt-accent, 1));
+}
+
+.violet-blue {
+  background-color: hsl(var(--violet-blue) / var(--bg-accent, 1));
+}
+
+.c-violet-blue {
+  color: hsl(var(--violet-blue) / var(--txt-accent, 1));
+}
+
+.persian-blue {
+  background-color: hsl(var(--persian-blue) / var(--bg-accent, 1));
+}
+
+.c-persian-blue {
+  color: hsl(var(--persian-blue) / var(--txt-accent, 1));
+}
+
+.white {
+  background-color: hsl(var(--white) / var(--bg-accent, 1));
+}
+
+.c-white {
+  color: hsl(var(--white) / var(--txt-accent, 1));
+}
+
+.pale-blue {
+  background-color: hsl(var(--pale-blue) / var(--bg-accent, 1));
+}
+
+.c-pale-blue {
+  color: hsl(var(--pale-blue) / var(--txt-accent, 1));
+}
+
+.light-lavender {
+  background-color: hsl(var(--light-lavender) / var(--bg-accent, 1));
+}
+
+.c-light-lavender {
+  color: hsl(var(--light-lavender) / var(--txt-accent, 1));
+}
+
+.dark-gray-blue {
+  background-color: hsl(var(--dark-gray-blue) / var(--bg-accent, 1));
+}
+
+.c-dark-gray-blue {
+  color: hsl(var(--dark-gray-blue) / var(--txt-accent, 1));
+}

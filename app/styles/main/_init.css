@@ -1,0 +1,101 @@
+:root {
+  /* Primary */
+  /* --red: 14 86% 42%;
+  --green: 159 69% 38%; */
+
+  /* --light-slate-blue: 252 100% 67%;
+  --light-royal-blue: 241 81% 54%; */
+
+  /* --violet-blue: 256 72% 46%;
+  --persian-blue: 241 72% 46%; */
+
+  /* Neutral */
+
+  /* --white: 0 0% 100%;
+  --pale-blue: 221 100% 96%;
+  --light-lavender: 241 100% 89%;
+  --dark-gray-blue: 224 30% 27%; */
+
+  /* System */
+  /* --background: var(--pale-blue);
+  --foreground: var(--dark-gray-blue); */
+
+  /* accent colors */
+  /* --accent-color: var(--blue-300);
+  --link-color: var(--blue-300); */
+  /* @media (prefers-color-scheme: dark) {
+    --background: var(--blue-950);
+    --foreground: var(--grey-50);
+  } */
+
+  /* Fonts */
+  --ff-plus-jakarta: "Plus Jakarta Sans", sans-serif;
+}
+
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --font-sans: var(--ff-plus-jakarta);
+  --font-mono: var(--ff-plus-jakarta);
+}
+
+/* Styles for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none; /* Disable animations */
+    transition: none; /* Disable transitions */
+    transform: none; /* Reset any transform properties */
+  }
+}
+
+body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: var(--ff-sans);
+  line-height: 1.6;
+  @apply min-h-screen grid place-items-center;
+}
+
+button {
+  @apply cursor-pointer;
+}
+
+input {
+  min-inline-size: 0;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+input {
+  &[type="radio"],
+  &[type="checkbox"] {
+    accent-color: hsl(var(--accent-color));
+  }
+  outline-color: hsl(var(--accent-color));
+}
+
+dialog {
+  &::backdrop {
+    background-color: hsl(var(--background) / 0.8);
+    @apply backdrop-blur-sm;
+  }
+}
+
+.rounded-x-full {
+  @apply rounded-l-full rounded-r-full;
+}
+
+.rounded-y-full {
+  @apply rounded-t-full rounded-b-full;
+}

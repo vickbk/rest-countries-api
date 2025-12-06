@@ -1,0 +1,5 @@
+// Remove global styling to use tailwind as default utility class
+// @forward "globals";
+@forward "main";
+@forward "specifics";
+@forward "functions";

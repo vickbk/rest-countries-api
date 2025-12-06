@@ -1,0 +1,55 @@
+@use "media-queries" as queries;
+@use "sass:list";
+
+.flex {
+  display: flex;
+}
+
+@each $name, $values in queries.$devices {
+  $size: list.nth($values, 1);
+  $class: list.nth($values, 2);
+  @include queries.from-mobile($size) {
+    .#{$class}-up-flex.#{$class}-up-flex {
+      display: flex;
+    }
+    .#{$class}-up-flex-column.#{$class}-up-flex-column {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  @include queries.from-desktop($size) {
+    .#{$class}-down-flex {
+      display: flex;
+    }
+    .#{$class}-down-flex-column {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+.flex-wrap {
+  flex-wrap: wrap;
+}
+.flex-grow {
+  flex-grow: 1;
+}
+.space-between {
+  justify-content: space-between;
+}
+.j-center {
+  justify-content: center;
+}
+.a-center {
+  align-items: center;
+}
+.a-start {
+  align-items: start;
+}
+.center {
+  place-items: center;
+}

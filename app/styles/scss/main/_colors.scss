@@ -1,0 +1,97 @@
+@use "../functions/" as f;
+@use "../globals/states" as s;
+@use "sass:map";
+
+$colorsMap: (
+  // Primary
+  red: 4 69% 50%,
+  lime: 61 70% 52%,
+  lime-accent: 62 65% 35%,
+  // Neutral
+  white: 0 0% 100%,
+  slate-100: 202 86% 94%,
+  slate-300: 203 41% 72%,
+  slate-500: 200 26% 54%,
+  slate-700: 200 24% 40%,
+  slate-900: 202 55% 16%,
+  slate-950: 202 55% 13%
+);
+
+$primary-color: map.get($colorsMap, slate-100);
+$link-color: map.get($colorsMap, lime);
+$text-color: map.get($colorsMap, slate-900);
+$accent-color: map.get($colorsMap, lime-accent);
+
+:root {
+  --background: #{$primary-color};
+  --foreground: #{$text-color};
+  --accent-color: #{$accent-color};
+  --link-color: #{$link-color};
+  @media (prefers-color-scheme: dark) {
+    // --background: #{$text-color};
+    // --foreground: #{$primary-color};
+  }
+  & {
+    @each $name, $color in $colorsMap {
+      --#{""+$name}: #{$color};
+    }
+  }
+}
+
+@mixin active-colors($suffix) {
+  .active-#{$suffix}.active-#{$suffix} {
+    @include s.active-state {
+      @content;
+    }
+  }
+}
+
+@each $name, $color in $colorsMap {
+  .#{"" + $name},
+  .hv-#{"" + $name}:hover,
+  .a-#{"" + $name}:active,
+  .a-#{"" + $name}:focus {
+    background-color: hsl(var(--#{"" + $name}) / var(--bg-accent, 1));
+    transition: background-color ease-in-out 0.3s;
+  }
+  @include active-colors(#{"" + $name}) {
+    background-color: hsl(var(--#{"" + $name}) / var(--bg-accent, 1));
+    transition: background-color ease-in-out 0.3s;
+  }
+
+  .c-#{"" + $name}.c-#{"" + $name},
+  .hv-c-#{"" + $name}:hover,
+  .a-c-#{"" + $name}:active,
+  .a-c-#{"" + $name}:focus {
+    color: hsl(var(--#{"" + $name}) / var(--txt-accent, 1));
+    transition: color ease-in-out 0.3s;
+  }
+  @include active-colors(#{"c-" + $name}) {
+    color: hsl(var(--#{"" + $name}) / var(--txt-accent, 1));
+    transition: color ease-in-out 0.3s;
+  }
+
+  .b-#{"" + $name}.b-#{"" + $name},
+  .hv-b-#{"" + $name}.hv-b-#{"" + $name}:hover,
+  .a-b-#{"" + $name}.a-b-#{"" + $name}:active,
+  .a-b-#{"" + $name}.a-b-#{"" + $name}:focus {
+    border-color: hsl(var(--#{"" + $name}) / 1);
+    transition: border ease-in-out 0.3s;
+  }
+  @include active-colors(#{"b-" + $name}) {
+    border-color: hsl(var(--#{"" + $name}) / 1);
+    transition: border ease-in-out 0.3s;
+  }
+
+  .out-#{"" + $name},
+  .hv-out-#{"" + $name}:hover,
+  .a-out-#{"" + $name}:active,
+  .a-out-#{"" + $name}:focus {
+    outline-color: hsl(var(--#{"" + $name}) / 1);
+    transition: outline ease-in-out 0.3s;
+  }
+  @include active-colors(#{"out-" + $name}) {
+    outline-color: hsl(var(--#{"" + $name}) / 1);
+    transition: outline ease-in-out 0.3s;
+  }
+}

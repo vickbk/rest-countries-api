@@ -1,0 +1,39 @@
+@use "media-queries" as media;
+@use "sass:list";
+
+.relative {
+  position: relative;
+}
+.absolute {
+  position: absolute;
+}
+.fixed {
+  position: fixed;
+}
+
+@each $_, $values in media.$devices {
+  $size: list.nth($values, 1);
+  $class: list.nth($values, 2);
+  @include media.from-mobile($size) {
+    .#{$class}-up-relative {
+      position: relative;
+    }
+    .#{$class}-up-absolute {
+      position: absolute;
+    }
+    .#{$class}-up-fixed {
+      position: fixed;
+    }
+  }
+  @include media.from-desktop($size) {
+    .#{$class}-down-relative {
+      position: relative;
+    }
+    .#{$class}-down-absolute {
+      position: absolute;
+    }
+    .#{$class}-down-fixed {
+      position: fixed;
+    }
+  }
+}

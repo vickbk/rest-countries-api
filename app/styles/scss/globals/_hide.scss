@@ -1,0 +1,34 @@
+@use "media-queries" as *;
+@use "transitions" as trans;
+.hide.hide,
+.sm-hide.sm-hide {
+  display: none;
+  opacity: 0;
+  animation-name: disappear;
+  animation-duration: 0.3s;
+}
+.sm-hide.sm-hide {
+  @include mobile-queries($mobile) {
+    display: inherit;
+    opacity: 1;
+  }
+}
+.sm-show.sm-show {
+  @include mobile-queries($mobile) {
+    display: none;
+  }
+}
+
+*:not(.hide.hide, .sm-hide.sm-hide, .sm-show.sm-show) {
+  animation-name: hideShow;
+  animation-duration: 0.3s;
+}
+
+.fade-in {
+  opacity: inherit;
+  transition: opacity ease-in-out 0.3s;
+}
+.fade-out {
+  opacity: 0;
+  transition: opacity ease-in-out 0.3s;
+}
