@@ -58,6 +58,7 @@ $accent-color: map.get($colorsMap, blue-950);
     --element-bg: var(--white);
     --input: var(--grey-400);
   }
+  --outstand: var(--element-bg);
 }
 
 @mixin active-colors($suffix) {

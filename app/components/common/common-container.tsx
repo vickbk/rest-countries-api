@@ -5,5 +5,5 @@ export const CommonContainer = ({
   children: React.ReactNode;
   className?: string;
 }) => {
-  return <section className={`${moreclasses}`}>{children}</section>;
+  return <section className={`px-4 ${moreclasses}`}>{children}</section>;
 };
