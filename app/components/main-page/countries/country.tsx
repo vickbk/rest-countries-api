@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export const Country = () => {
   return (
@@ -9,7 +10,9 @@ export const Country = () => {
         height={600}
         alt="Sample image"
       />
-      <h3>Country name</h3>
+      <h3>
+        <Link href={"/country"}>Country name</Link>{" "}
+      </h3>
       <ul>
         {[{ name: "population", value: 81770900 }].map(
           ({ name, value }, key) => (

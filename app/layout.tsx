@@ -28,7 +28,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${nunitoSans.variable} antialiased`}>
         <Header />
-        <main className="grid items-center grow">{children}</main>
+        <main className="grow">{children}</main>
       </body>
     </html>
   );
