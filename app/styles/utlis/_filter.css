@@ -1,0 +1,19 @@
+.filter {
+  .filter__summary {
+    @apply p-4 px-8 rounded-lg cursor-pointer;
+    &::marker {
+      content: "";
+    }
+    .filter__icon {
+      @apply transition-transform duration-300 inline-block;
+    }
+  }
+  .filter__list {
+    @apply mt-2 absolute rounded-lg p-4 px-8 grid gap-4 w-full;
+  }
+  &:open {
+    .filter__icon {
+      @apply rotate-180;
+    }
+  }
+}
