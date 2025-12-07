@@ -1,9 +1,10 @@
 import { HomePage } from "./components/main-page/home-page";
+import { Regions } from "./lib/countries";
 
 export default async function Home(props: {
-  searchParams: Promise<{ country?: string }>;
+  searchParams: Promise<{ country?: string; region: Regions }>;
 }) {
-  const { country = "" } = await props.searchParams;
+  const searchParams = await props.searchParams;
 
-  return <HomePage country={country} />;
+  return <HomePage {...searchParams} />;
 }

@@ -4,16 +4,19 @@ import { Icon } from "../common/icon";
 import { SROnly } from "../shared/SROnly";
 import { useDebouncedCallback } from "use-debounce";
 import { updateSearchParams } from "@/app/lib/update-search-params";
+import { useRef } from "react";
 
 export const Filter = () => {
   const regions = ["Africa", "America", "Asia", "Europe", "Oceania"];
   const pathname = usePathname();
   const { replace } = useRouter();
+  const detailsElement = useRef<HTMLDetailsElement>(null);
   const valueChange = useDebouncedCallback((value: string) => {
     replace(updateSearchParams({ param: "region", value, pathname }));
+    detailsElement.current?.removeAttribute("open");
   }, 300);
   return (
-    <details className="filter relative">
+    <details className="filter relative" ref={detailsElement}>
       <summary className="filter__summary outstand">
         Filter by Region{" "}
         <span className=" ml-8">

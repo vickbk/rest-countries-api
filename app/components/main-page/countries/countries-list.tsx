@@ -1,12 +1,14 @@
-import { loadCountries } from "@/app/lib/countries";
+import { loadCountries, Regions } from "@/app/lib/countries";
 import { Country } from "./country";
 
 export const CountriesList = async ({
-  country,
+  country = "",
+  region = "",
 }: {
-  country: string;
+  country?: string;
   page?: string;
+  region: Regions;
 }) => {
-  const countries = (await loadCountries(country)) || [];
+  const countries = (await loadCountries({ country, region })) || [];
   return countries.map((_, key) => <Country key={key} />);
 };
