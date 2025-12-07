@@ -29,8 +29,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${nunitoSans.variable} antialiased`}>
         <Header />
-        <main className="grow">
-          <CommonContainer>{children}</CommonContainer>
+        <main className="grow flex flex-col">
+          <CommonContainer className="grow flex flex-col">
+            {children}
+          </CommonContainer>
         </main>
       </body>
     </html>

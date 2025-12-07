@@ -6,7 +6,7 @@ export const CommonContainer = ({
   className?: string;
 }) => {
   return (
-    <section className={`px-4 max-w-300 mx-auto ${moreclasses}`}>
+    <section className={`px-4 max-w-300 mx-auto xl:px-0 ${moreclasses}`}>
       {children}
     </section>
   );

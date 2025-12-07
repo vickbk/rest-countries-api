@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export const BorderCountries = () => {
   return (
-    <article>
+    <article className="sm:col-span-full">
       <h3>Border Countries</h3>
       <ul className="flex flex-wrap gap-4 mt-6">
         {[

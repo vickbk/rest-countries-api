@@ -8,6 +8,8 @@ export const CountryDetails = () => {
         {[
           { name: "the name", value: "the value" },
           { name: "the name", value: "the value" },
+          { name: "the name", value: "the value" },
+          { name: "the name", value: "the value" },
         ].map((detail, key) => (
           <DetailElement key={key} {...detail} />
         ))}
