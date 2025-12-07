@@ -6,12 +6,13 @@ export const Country = () => {
   return (
     <article className="outstand rounded-lg">
       <Image
+        className="rounded-t-lg"
         src={"https://flagcdn.com/az.svg"}
         width={1200}
         height={600}
         alt="Sample image"
       />
-      <div className="p-8">
+      <section className="p-8">
         <h3 className="font-semibold text-2xl mb-4">
           <Link href={"/country"}>Country name</Link>{" "}
         </h3>
@@ -20,7 +21,7 @@ export const Country = () => {
             <DetailElement key={key} {...detail} />
           ))}
         </ul>
-      </div>
+      </section>
     </article>
   );
 };
