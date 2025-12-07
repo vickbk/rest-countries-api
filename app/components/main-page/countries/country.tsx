@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { DetailElement } from "../../common/detail-element";
 
 export const Country = () => {
   return (
@@ -15,14 +16,9 @@ export const Country = () => {
           <Link href={"/country"}>Country name</Link>{" "}
         </h3>
         <ul>
-          {[{ name: "population", value: 81770900 }].map(
-            ({ name, value }, key) => (
-              <li key={key} className="font-normal">
-                <span className="font-semibold text-lg capitalize">{name}</span>
-                : {value}
-              </li>
-            )
-          )}
+          {[{ name: "population", value: "81770900" }].map((detail, key) => (
+            <DetailElement key={key} {...detail} />
+          ))}
         </ul>
       </div>
     </article>

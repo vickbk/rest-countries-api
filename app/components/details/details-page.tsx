@@ -7,12 +7,15 @@ import { BorderCountries } from "./border-countries";
 
 export const DetailsPage = () => {
   return (
-    <>
-      <Link href={"/"}>
+    <section className="px-4">
+      <Link
+        className="inline-block my-8 outstand p-2 px-8 rounded-lg"
+        href={"/"}
+      >
         {" "}
-        <Icon name="arrow-left" /> Back
+        <Icon name="arrow-left mr-4" /> Back
       </Link>
-      <article>
+      <article className="grid gap-8">
         <div>
           <Image
             src={"https://flagcdn.com/az.svg"}
@@ -21,8 +24,8 @@ export const DetailsPage = () => {
             alt="Sample image"
           />
         </div>
-        <section>
-          <h2>
+        <section className="grid gap-8">
+          <h2 className="text-2xl font-semibold">
             <SROnly>Visited Country:</SROnly>The country
           </h2>
           <CountryDetails />
@@ -30,6 +33,6 @@ export const DetailsPage = () => {
           <BorderCountries />
         </section>
       </article>
-    </>
+    </section>
   );
 };
