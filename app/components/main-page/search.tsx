@@ -8,7 +8,9 @@ export const Search = ({ country }: { country: string }) => {
   const pathname = usePathname();
   const { replace } = useRouter();
   const searchCountry = useDebouncedCallback((value: string) => {
-    replace(updateSearchParams({ pathname, value, param: "country" }));
+    replace(
+      updateSearchParams({ pathname, value, param: "country", reset: ["page"] })
+    );
   }, 300);
   return (
     <label className="relative grow lg:max-w-1/3">

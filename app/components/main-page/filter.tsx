@@ -20,7 +20,9 @@ export const Filter = () => {
   const detailsElement = useRef<HTMLDetailsElement>(null);
 
   const valueChange = (value: string) => {
-    replace(updateSearchParams({ param: "region", value, pathname }));
+    replace(
+      updateSearchParams({ param: "region", value, pathname, reset: ["page"] })
+    );
     detailsElement.current?.removeAttribute("open");
   };
 

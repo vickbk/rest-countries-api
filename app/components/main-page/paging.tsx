@@ -17,8 +17,9 @@ export const Paging = ({
   const updatePage = (value: string) => {
     replace(updateSearchParams({ param: "page", value, pathname }));
   };
+  // in case the new results have less pages than last page in use go back to page 1
   useEffect(() => {
-    if (page > totalPages) updatePage("1");
+    if (page > totalPages) updatePage("");
   });
   return (
     <ol className="p-4 gap-4 col-span-full flex flex-wrap justify-center">
