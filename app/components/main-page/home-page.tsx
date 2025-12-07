@@ -11,16 +11,20 @@ export const HomePage = (props: {
   region: Regions;
   page?: string;
 }) => {
+  const { country = "", region = "", page = "" } = props;
   return (
     <>
       <section className="my-8 flex justify-between flex-wrap gap-8">
-        <Search country={props.country || ""} />
+        <Search country={country} />
         <Filter />
       </section>
       <section className="p-8 grid gap-8 sm:grid-cols-2 sm:px-0 md:grid-cols-3 lg:grid-cols-4">
         <SROnly>List of countries</SROnly>
 
-        <Suspense fallback={<CountriesPlaceHolder />}>
+        <Suspense
+          key={country + region + page}
+          fallback={<CountriesPlaceHolder />}
+        >
           <CountriesList {...props} />
         </Suspense>
       </section>
