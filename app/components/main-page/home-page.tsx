@@ -5,7 +5,7 @@ import { Filter } from "./filter";
 import { Search } from "./search";
 import { CountriesList } from "./countries/countries-list";
 
-export const HomePage = () => {
+export const HomePage = (props: { country: string }) => {
   return (
     <>
       <section className="my-8 flex justify-between flex-wrap gap-8">
@@ -18,7 +18,7 @@ export const HomePage = () => {
           <Country key={key} />
         ))} */}
         <Suspense fallback={<CountriesPlaceHolder />}>
-          <CountriesList />
+          <CountriesList {...props} />
         </Suspense>
       </section>
     </>

@@ -1,9 +1,9 @@
 import { HomePage } from "./components/main-page/home-page";
 
 export default async function Home(props: {
-  searchParams: Promise<{ name?: string }>;
+  searchParams: Promise<{ country?: string }>;
 }) {
-  const { name = "" } = await props.searchParams;
+  const { country = "" } = await props.searchParams;
 
-  return <HomePage />;
+  return <HomePage country={country} />;
 }
