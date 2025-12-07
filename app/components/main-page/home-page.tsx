@@ -1,7 +1,9 @@
+import { Suspense } from "react";
 import { SROnly } from "../shared/SROnly";
-import { Country } from "./countries/country";
+import { CountriesPlaceHolder } from "./countries/country-placeholder";
 import { Filter } from "./filter";
 import { Search } from "./search";
+import { CountriesList } from "./countries/countries-list";
 
 export const HomePage = () => {
   return (
@@ -12,9 +14,12 @@ export const HomePage = () => {
       </section>
       <section className="p-8 grid gap-8 sm:grid-cols-2 sm:px-0 md:grid-cols-3 lg:grid-cols-4">
         <SROnly>List of countries</SROnly>
-        {[1, 2, 3, 4].map((_, key) => (
+        {/* {[1, 2, 3, 4].map((_, key) => (
           <Country key={key} />
-        ))}
+        ))} */}
+        <Suspense fallback={<CountriesPlaceHolder />}>
+          <CountriesList />
+        </Suspense>
       </section>
     </>
   );

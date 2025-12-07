@@ -30,7 +30,7 @@ export default function RootLayout({
       <body className={`${nunitoSans.variable} antialiased`}>
         <Header />
         <main className="grow flex flex-col">
-          <CommonContainer className="grow flex flex-col">
+          <CommonContainer className="grow flex flex-col w-full">
             {children}
           </CommonContainer>
         </main>

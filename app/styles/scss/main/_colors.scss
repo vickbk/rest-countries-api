@@ -1,6 +1,7 @@
 @use "../functions/" as f;
 @use "../globals/states" as s;
 @use "sass:map";
+@use "sass:list";
 
 $colorsMap: (
   blue-900: 209 23% 22%,
@@ -9,6 +10,8 @@ $colorsMap: (
   grey-400: 0 0% 50%,
   grey-50: 0 0% 99%,
   white: 0 100% 100%,
+  background: var(--background),
+  foreground: var(--foreground),
 );
 
 $primary-color: map.get($colorsMap, grey-50);
@@ -16,10 +19,14 @@ $link-color: map.get($colorsMap, blue-950);
 $text-color: map.get($colorsMap, grey-950);
 $accent-color: map.get($colorsMap, blue-950);
 
+$exluded-variables: background foreground;
+
 :root {
   & {
     @each $name, $color in $colorsMap {
-      --#{""+$name}: #{$color};
+      @if not list.index($exluded-variables, $name) {
+        --#{""+$name}: #{$color};
+      }
     }
   }
   --background: var(--grey-50);
