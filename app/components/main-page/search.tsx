@@ -2,17 +2,13 @@
 import { useDebouncedCallback } from "use-debounce";
 import { SROnly } from "../shared/SROnly";
 import { usePathname, useRouter } from "next/navigation";
+import { updateSearchParams } from "@/app/lib/update-search-params";
 
 export const Search = ({ country }: { country: string }) => {
   const pathname = usePathname();
   const { replace } = useRouter();
-  const params = new URLSearchParams();
   const searchCountry = useDebouncedCallback((value: string) => {
-    if (!value) {
-      params.delete("country");
-    } else params.set("country", value);
-    replace(`${pathname}?${params.toString()}`);
-    console.log(pathname);
+    replace(updateSearchParams({ pathname, value, param: "country" }));
   }, 300);
   return (
     <label className="relative grow lg:max-w-1/3">
