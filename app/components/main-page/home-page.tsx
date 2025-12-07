@@ -6,7 +6,11 @@ import { Search } from "./search";
 import { CountriesList } from "./countries/countries-list";
 import { Regions } from "@/app/lib/countries";
 
-export const HomePage = (props: { country?: string; region: Regions }) => {
+export const HomePage = (props: {
+  country?: string;
+  region: Regions;
+  page?: string;
+}) => {
   return (
     <>
       <section className="my-8 flex justify-between flex-wrap gap-8">
@@ -15,9 +19,7 @@ export const HomePage = (props: { country?: string; region: Regions }) => {
       </section>
       <section className="p-8 grid gap-8 sm:grid-cols-2 sm:px-0 md:grid-cols-3 lg:grid-cols-4">
         <SROnly>List of countries</SROnly>
-        {/* {[1, 2, 3, 4].map((_, key) => (
-          <Country key={key} />
-        ))} */}
+
         <Suspense fallback={<CountriesPlaceHolder />}>
           <CountriesList {...props} />
         </Suspense>
