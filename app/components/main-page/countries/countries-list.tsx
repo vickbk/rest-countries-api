@@ -21,8 +21,8 @@ export const CountriesList = async ({
   );
   return (
     <>
-      {countriesPage.map((_, key) => (
-        <Country key={key} />
+      {countriesPage.map((country, key) => (
+        <Country key={key} country={country} />
       ))}
       <Paging page={+page} totalPages={totalPages} />
     </>

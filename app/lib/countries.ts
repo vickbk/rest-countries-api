@@ -5,11 +5,18 @@ import {
   getCountriesByName,
   getCountriesByRegion,
 } from "@yusifaliyevpro/countries";
-import { Region } from "@yusifaliyevpro/countries/types";
+import {
+  Country,
+  CountryPicker,
+  Region,
+} from "@yusifaliyevpro/countries/types";
 
 export type Regions = Region | "";
 
-const fields = ["name", "population", "flags"] as const;
+export type CountryType<T extends readonly (keyof Country)[] = []> =
+  CountryPicker<T>;
+
+const fields = ["name", "population", "flags", "capital", "region"] as const;
 const params = { independant: true, fields };
 
 export const loadCountries = async ({

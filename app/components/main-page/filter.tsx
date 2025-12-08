@@ -33,6 +33,7 @@ export const Filter = ({ region }: { region: Regions }) => {
         detailsElement.current?.removeAttribute("open");
     }
     window.addEventListener("click", closeDetails);
+    return () => window.removeEventListener("click", closeDetails);
   }, []);
 
   return (
