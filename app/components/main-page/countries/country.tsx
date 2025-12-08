@@ -15,7 +15,7 @@ export const Country = ({
     ["capital", (capital || []).join(", ")],
   ].map(([name, value]) => ({ name, value }));
   return (
-    <article className="outstand rounded-lg flex flex-col justify-between shadow-2xl">
+    <article className="outstand rounded-lg flex flex-col justify-between shadow-2xl country-card relative">
       <Image
         className="rounded-t-lg"
         src={flags.svg}
@@ -25,7 +25,9 @@ export const Country = ({
       />
       <section className="p-8">
         <h3 className="font-semibold text-xl mb-4">
-          <Link href={"/" + name.common}>{name.common}</Link>{" "}
+          <Link href={"/" + name.common} className="country-card__link">
+            {name.common} <span className="absolute inset-0"></span>
+          </Link>{" "}
         </h3>
         <ul className="grid gap-1">
           {details.map((detail, key) => (

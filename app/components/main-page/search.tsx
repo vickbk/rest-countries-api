@@ -34,7 +34,7 @@ export const Search = ({ country }: { country: string }) => {
       )}
       <SROnly>Entrer a country name</SROnly>
       <input
-        className="outstand w-full  p-4 rounded-lg pl-16"
+        className="outstand active-out-foreground outline-2 w-full  p-4 rounded-lg pl-16"
         type="text"
         placeholder="search for a country..."
         defaultValue={country}

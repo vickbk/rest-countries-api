@@ -15,7 +15,7 @@ export const BorderCountries = async ({
         {borderCountries.map(({ name: { common } }) => (
           <li key={common}>
             <Link
-              className="p-2 px-6 outstand block rounded shadow-2xl"
+              className="p-2 px-6 outstand outstand-button block rounded shadow-2xl"
               href={`/${common}`}
             >
               {common}

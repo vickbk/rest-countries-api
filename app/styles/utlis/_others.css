@@ -1,0 +1,19 @@
+.country-card {
+  @apply transition-transform duration-300 cursor-pointer;
+  &:hover,
+  &:focus-within {
+    @apply scale-105;
+  }
+  &:active {
+    @apply scale-95;
+  }
+  .country-card__link {
+    &:hover,
+    &:focus,
+    &:active {
+      @apply outline-none;
+      text-decoration: underline;
+      text-decoration-style: dotted;
+    }
+  }
+}

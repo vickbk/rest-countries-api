@@ -38,7 +38,7 @@ export const Filter = ({ region }: { region: Regions }) => {
 
   return (
     <details className="filter relative shadow-2xl" ref={detailsElement}>
-      <summary className="filter__summary outstand">
+      <summary className="filter__summary outstand outstand-button">
         Filter by Region{" "}
         <span className=" ml-8">
           <Icon name="chevron-down filter__icon" />

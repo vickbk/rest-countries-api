@@ -24,10 +24,14 @@ export const Header = () => {
     );
   }, [darkTheme]);
   return (
-    <header className="outstand py-8 shadow">
-      <CommonContainer className="flex justify-between">
+    <header className="outstand py-4 shadow">
+      <CommonContainer className="flex justify-between items-center">
         <h1 className="font-semibold text-lg">Where in the world?</h1>
-        <button type="button" onClick={() => setDarkTheme(!darkTheme)}>
+        <button
+          className="outstand-button p-4 rounded-lg"
+          type="button"
+          onClick={() => setDarkTheme(!darkTheme)}
+        >
           <i className={`bi bi-${darkTheme ? "sun" : "moon-fill"}`}></i>
           <SROnly>Switch to</SROnly> {darkTheme ? "Light" : "Dark"} Mode
         </button>
