@@ -8,6 +8,8 @@ import {
   CountryDetailsType,
   getCountryDetails,
 } from "@/app/lib/country-details";
+import { Suspense } from "react";
+import { BorderPlaceholder } from "./border-placeholder";
 
 export const DetailsPage = async ({ country }: { country: string }) => {
   const [selected] =
@@ -23,7 +25,7 @@ export const DetailsPage = async ({ country }: { country: string }) => {
       ],
     })) as CountryDetailsType[]) || [];
   if (!selected) notFound();
-  const { flags, name } = selected;
+  const { flags, name, borders } = selected;
 
   const { primaryDetails, moreDetails } = getCountryDetails({
     country: selected,
@@ -46,7 +48,12 @@ export const DetailsPage = async ({ country }: { country: string }) => {
         </h2>
         <CountryDetails title="Primary details" details={primaryDetails} />
         <CountryDetails title="More details" details={moreDetails} />
-        <BorderCountries />
+        <Suspense
+          key={borders?.join("") || "borders"}
+          fallback={<BorderPlaceholder />}
+        >
+          <BorderCountries borders={borders} />
+        </Suspense>
       </section>
     </article>
   );

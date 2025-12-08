@@ -1,4 +1,5 @@
 import { LoadingPlacehoder } from "../common/loading-placeholder";
+import { BorderPlaceholder } from "./border-placeholder";
 
 export const DetailsPlaceholder = () => {
   return (
@@ -16,17 +17,8 @@ export const DetailsPlaceholder = () => {
               ))}
           </div>
         ))}
-        <div>Border Countries:</div>
-        <div className="flex flex-wrap gap-4 col-span-full">
-          {Array(4)
-            .fill(null)
-            .map((_, key) => (
-              <LoadingPlacehoder
-                key={key}
-                className="p-4 basis-20 grow outstand"
-              />
-            ))}
-        </div>
+
+        <BorderPlaceholder />
       </div>
     </div>
   );

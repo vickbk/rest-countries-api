@@ -1,17 +1,21 @@
+import { loadCountriesByTag } from "@/app/lib/countries";
 import Link from "next/link";
 
-export const BorderCountries = () => {
+export const BorderCountries = async ({
+  borders = [],
+}: {
+  borders?: string[];
+}) => {
+  const borderCountries = (await loadCountriesByTag({ codes: borders })) || [];
+
   return (
     <article className="sm:col-span-full">
       <h3>Border Countries</h3>
       <ul className="flex flex-wrap gap-4 mt-6">
-        {[
-          { name: "the name", value: "the value" },
-          { name: "the name2", value: "the value" },
-        ].map(({ name, value }) => (
-          <li key={name}>
-            <Link className="p-2 px-6 outstand block" href={`/${value}`}>
-              {name}
+        {borderCountries.map(({ name: { common } }) => (
+          <li key={common}>
+            <Link className="p-2 px-6 outstand block" href={`/${common}`}>
+              {common}
             </Link>
           </li>
         ))}

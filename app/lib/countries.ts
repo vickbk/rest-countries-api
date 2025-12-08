@@ -2,10 +2,12 @@
 
 import {
   getCountries,
+  getCountriesByCodes,
   getCountriesByName,
   getCountriesByRegion,
 } from "@yusifaliyevpro/countries";
 import {
+  Cca3Code,
   Country,
   CountryPicker,
   Region,
@@ -68,4 +70,12 @@ const loadCountriesByRegion = async ({
       common.toLowerCase().indexOf(country.toLowerCase()) !== -1 ||
       official.toLowerCase().indexOf(country.toLowerCase()) !== -1
   );
+};
+
+export const loadCountriesByTag = async ({ codes }: { codes: Cca3Code[] }) => {
+  const countries = await getCountriesByCodes({
+    codes,
+    fields,
+  });
+  return countries;
 };
