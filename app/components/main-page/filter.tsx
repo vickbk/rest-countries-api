@@ -3,9 +3,10 @@ import { usePathname, useRouter } from "next/navigation";
 import { Icon } from "../common/icon";
 import { SROnly } from "../shared/SROnly";
 import { updateSearchParams } from "@/app/lib/update-search-params";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
+import { Regions } from "@/app/lib/countries";
 
-export const Filter = () => {
+export const Filter = ({ region }: { region: Regions }) => {
   const regions = [
     "Africa",
     "Asia",
@@ -26,6 +27,14 @@ export const Filter = () => {
     detailsElement.current?.removeAttribute("open");
   };
 
+  useEffect(() => {
+    function closeDetails({ target }: PointerEvent) {
+      if (!detailsElement.current?.contains(target as Node))
+        detailsElement.current?.removeAttribute("open");
+    }
+    window.addEventListener("click", closeDetails);
+  }, []);
+
   return (
     <details className="filter relative" ref={detailsElement}>
       <summary className="filter__summary outstand">
@@ -38,17 +47,25 @@ export const Filter = () => {
         className="outstand filter__list"
         onInput={(e) => valueChange((e.target as HTMLInputElement).value)}
       >
-        {regions.map((region, key) => (
-          <label key={key} className="cursor-pointer">
-            {region} <SROnly>region</SROnly>
+        {regions.map((reg, key) => (
+          <label key={key} className="cursor-pointer flex justify-between">
+            {reg} <SROnly>region</SROnly>{" "}
+            {reg === region && <Icon name="check2-all" />}
             <input
               type="radio"
               name="region"
               className="sr-only"
-              value={region}
+              value={reg}
+              defaultChecked={reg === region}
             />
           </label>
         ))}
+        {region !== "" && (
+          <label className="cursor-pointer flex justify-between text-red-500">
+            Clear <SROnly>region</SROnly> <Icon name="trash" />
+            <input type="radio" name="region" className="sr-only" value={""} />
+          </label>
+        )}
       </form>
     </details>
   );

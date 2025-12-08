@@ -19,7 +19,7 @@ export const Paging = ({
   };
   // in case the new results have less pages than last page in use go back to page 1
   useEffect(() => {
-    if (page > totalPages) updatePage("");
+    if (totalPages !== 0 && page > totalPages) updatePage("");
   });
   return (
     <ol className="p-4 gap-4 col-span-full flex flex-wrap justify-center">
