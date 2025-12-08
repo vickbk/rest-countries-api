@@ -32,7 +32,7 @@ export const DetailsPage = async ({ country }: { country: string }) => {
   });
 
   return (
-    <article className="grid gap-8 lg:gap-32 lg:grid-cols-2 lg:items-center grow">
+    <article className="grid gap-8 lg:gap-32 lg:grid-cols-2 lg:items-center grow lg:pb-16">
       <div>
         <Image
           src={flags.svg}
