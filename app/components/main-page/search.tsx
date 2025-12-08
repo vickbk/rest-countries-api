@@ -3,7 +3,7 @@ import { useDebouncedCallback } from "use-debounce";
 import { SROnly } from "../shared/SROnly";
 import { usePathname, useRouter } from "next/navigation";
 import { updateSearchParams } from "@/app/lib/update-search-params";
-import { Icon } from "../common/icon";
+import { Icon } from "../common/bi-icon";
 import { useRef } from "react";
 
 export const Search = ({ country }: { country: string }) => {

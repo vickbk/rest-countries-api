@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Icon } from "../components/common/icon";
+import { Icon } from "../components/common/bi-icon";
 export default function NotFound() {
   return (
     <section className="flex grow flex-col items-center justify-center gap-2">
