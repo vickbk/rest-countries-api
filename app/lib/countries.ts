@@ -23,10 +23,12 @@ export const loadCountries = async ({
   country = "",
   region = "",
   fullText = false,
+  additionalFields = [],
 }: {
   country: string;
   region?: Regions;
   fullText?: boolean;
+  additionalFields?: (keyof Country)[];
 }) => {
   if (region !== "") return loadCountriesByRegion({ region, country });
   if (country === "") {
@@ -43,7 +45,7 @@ export const loadCountries = async ({
   }
   return await getCountriesByName({
     name: country,
-    fields,
+    fields: [...fields, ...additionalFields],
     fullText,
   });
 };

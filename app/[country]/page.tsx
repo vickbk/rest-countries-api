@@ -15,7 +15,7 @@ const Page = async ({ params }: { params: Promise<{ country: string }> }) => {
         {" "}
         <Icon name="arrow-left mr-4" /> Back
       </Link>
-      <Suspense fallback={<DetailsPlaceholder />}>
+      <Suspense key={country} fallback={<DetailsPlaceholder />}>
         <DetailsPage country={country} />
       </Suspense>
     </div>
