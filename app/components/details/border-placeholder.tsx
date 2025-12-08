@@ -10,7 +10,7 @@ export const BorderPlaceholder = () => {
           .map((_, key) => (
             <LoadingPlacehoder
               key={key}
-              className="p-4 basis-20 grow outstand"
+              className="p-4 basis-20 grow outstand shadow"
             />
           ))}
       </div>

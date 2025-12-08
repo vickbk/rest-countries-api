@@ -4,7 +4,7 @@ import { BorderPlaceholder } from "./border-placeholder";
 export const DetailsPlaceholder = () => {
   return (
     <div className="grid gap-8 lg:gap-32 lg:grid-cols-2 lg:items-center grow w-full">
-      <LoadingPlacehoder className="py-40 outstand" />
+      <LoadingPlacehoder className="py-40 outstand shadow" />
 
       <div className="grid gap-8 sm:grid-cols-2">
         <LoadingPlacehoder className="outstand py-5 col-span-full" />
@@ -13,7 +13,7 @@ export const DetailsPlaceholder = () => {
             {Array(4)
               .fill(null)
               .map((_, key) => (
-                <LoadingPlacehoder className="py-2 outstand" key={key} />
+                <LoadingPlacehoder className="py-2 outstand shadow" key={key} />
               ))}
           </div>
         ))}

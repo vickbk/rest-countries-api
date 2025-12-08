@@ -60,7 +60,7 @@ const PagingButton = ({
   return (
     <li>
       <button
-        className={`outstand p-4 rounded-lg ${
+        className={`outstand p-4 rounded-lg shadow-2xl ${
           isActive ? "scale-85 opacity-40" : ""
         }`}
         type="button"

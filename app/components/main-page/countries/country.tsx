@@ -15,7 +15,7 @@ export const Country = ({
     ["capital", (capital || []).join(", ")],
   ].map(([name, value]) => ({ name, value }));
   return (
-    <article className="outstand rounded-lg flex flex-col justify-between">
+    <article className="outstand rounded-lg flex flex-col justify-between shadow-2xl">
       <Image
         className="rounded-t-lg"
         src={flags.svg}

@@ -20,7 +20,7 @@ export const Search = ({ country }: { country: string }) => {
     if (inputRef.current) inputRef.current.value = "";
   };
   return (
-    <label className="relative grow lg:max-w-1/3">
+    <label className="relative grow lg:max-w-1/3 shadow-2xl">
       <i className="bi bi-search absolute top-1/2 -translate-y-1/2 left-6"></i>{" "}
       {country !== "" && (
         <button

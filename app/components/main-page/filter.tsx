@@ -37,7 +37,7 @@ export const Filter = ({ region }: { region: Regions }) => {
   }, []);
 
   return (
-    <details className="filter relative" ref={detailsElement}>
+    <details className="filter relative shadow-2xl" ref={detailsElement}>
       <summary className="filter__summary outstand">
         Filter by Region{" "}
         <span className=" ml-8">
@@ -45,7 +45,7 @@ export const Filter = ({ region }: { region: Regions }) => {
         </span>
       </summary>
       <form
-        className="outstand filter__list"
+        className="outstand filter__list shadow-2xl"
         onInput={(e) => valueChange((e.target as HTMLInputElement).value)}
       >
         {regions.map((reg, key) => (

@@ -24,7 +24,7 @@ export const Header = () => {
     );
   }, [darkTheme]);
   return (
-    <header className="outstand py-8">
+    <header className="outstand py-8 shadow">
       <CommonContainer className="flex justify-between">
         <h1 className="font-semibold text-lg">Where in the world?</h1>
         <button type="button" onClick={() => setDarkTheme(!darkTheme)}>
