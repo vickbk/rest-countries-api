@@ -2,7 +2,7 @@
 import { updateSearchParams } from "@/app/lib/update-search-params";
 import { SROnly } from "../shared/SROnly";
 import { usePathname, useRouter } from "next/navigation";
-import { Icon } from "../common/icon";
+import { Icon } from "../common/bi-icon";
 import { useEffect } from "react";
 
 export const Paging = ({

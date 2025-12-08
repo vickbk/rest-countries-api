@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { DetailsPage } from "../components/details/details-page";
-import { Icon } from "../components/common/icon";
+import { Icon } from "../components/common/bi-icon";
 import { DetailsPlaceholder } from "../components/details/details-placeholder";
 import { Suspense } from "react";
 

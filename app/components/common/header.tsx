@@ -28,7 +28,7 @@ export const Header = () => {
       <CommonContainer className="flex justify-between items-center">
         <h1 className="font-semibold text-lg">Where in the world?</h1>
         <button
-          className="outstand-button p-4 rounded-lg"
+          className="outstand-button py-4 rounded-lg"
           type="button"
           onClick={() => setDarkTheme(!darkTheme)}
         >

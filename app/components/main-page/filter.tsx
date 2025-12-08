@@ -1,6 +1,6 @@
 "use client";
 import { usePathname, useRouter } from "next/navigation";
-import { Icon } from "../common/icon";
+import { Icon } from "../common/bi-icon";
 import { SROnly } from "../shared/SROnly";
 import { updateSearchParams } from "@/app/lib/update-search-params";
 import { useEffect, useRef } from "react";
