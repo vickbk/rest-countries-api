@@ -18,7 +18,7 @@ export const HomePage = (props: {
         <Search country={country} />
         <Filter region={region} />
       </section>
-      <section className="p-8 grid gap-8 sm:grid-cols-2 sm:px-0 md:grid-cols-3 lg:grid-cols-4">
+      <section className="p-8 grid gap-8 sm:grid-cols-2 sm:px-0 md:grid-cols-3 lg:grid-cols-4 text-[.875rem]">
         <SROnly>List of countries</SROnly>
 
         <Suspense

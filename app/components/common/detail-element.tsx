@@ -3,8 +3,14 @@ export const DetailElement = ({
   value,
 }: Record<"name" | "value", string>) => {
   return (
-    <li className="font-normal not-last:mb-4">
-      <span className="font-semibold text-lg capitalize">{name}</span>: {value}
+    <li className="font-normal">
+      <span className="font-semibold capitalize">{name}</span>:{" "}
+      <span
+        className="c-foreground"
+        style={{ "--txt-accent": 0.75 } as React.CSSProperties}
+      >
+        {value}
+      </span>
     </li>
   );
 };

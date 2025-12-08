@@ -15,7 +15,7 @@ export const Country = ({
     ["capital", (capital || []).join(", ")],
   ].map(([name, value]) => ({ name, value }));
   return (
-    <article className="outstand rounded-lg">
+    <article className="outstand rounded-lg flex flex-col justify-between">
       <Image
         className="rounded-t-lg"
         src={flags.svg}
@@ -25,9 +25,9 @@ export const Country = ({
       />
       <section className="p-8">
         <h3 className="font-semibold text-xl mb-4">
-          <Link href={"/country"}>{name.common}</Link>{" "}
+          <Link href={"/" + name.common}>{name.common}</Link>{" "}
         </h3>
-        <ul>
+        <ul className="grid gap-1">
           {details.map((detail, key) => (
             <DetailElement key={key} {...detail} />
           ))}
