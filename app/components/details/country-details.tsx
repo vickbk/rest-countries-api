@@ -10,7 +10,7 @@ export const CountryDetails = ({
   return (
     <article>
       <h3 className="sr-only">{title}</h3>
-      <ul>
+      <ul className="grid gap-2">
         {details.map((detail, key) => (
           <DetailElement key={key} {...detail} />
         ))}
