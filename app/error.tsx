@@ -1,6 +1,6 @@
 "use client";
 
-import { ErrorElement } from "../components/common/error-element";
+import { ErrorElement } from "./components/common/error-element";
 
 export default function Error(props: {
   error: Error & { digest?: string };

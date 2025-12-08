@@ -5,6 +5,5 @@ export default async function Home(props: {
   searchParams: Promise<{ country?: string; region: Regions }>;
 }) {
   const searchParams = await props.searchParams;
-
   return <HomePage {...searchParams} />;
 }
