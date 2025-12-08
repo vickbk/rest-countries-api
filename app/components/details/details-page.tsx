@@ -2,9 +2,12 @@ import Image from "next/image";
 import { SROnly } from "../shared/SROnly";
 import { CountryDetails } from "./country-details";
 import { BorderCountries } from "./border-countries";
+import { loadCountries } from "@/app/lib/countries";
+import { notFound } from "next/navigation";
 
-export const DetailsPage = async () => {
-  await new Promise((resolve) => setTimeout(resolve, 3000));
+export const DetailsPage = async ({ country }: { country: string }) => {
+  const [selected] = (await loadCountries({ country, fullText: true })) || [];
+  if (!selected) notFound();
   return (
     <article className="grid gap-8 lg:gap-32 lg:grid-cols-2 lg:items-center grow">
       <div>

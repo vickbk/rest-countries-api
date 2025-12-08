@@ -22,9 +22,11 @@ const params = { independant: true, fields };
 export const loadCountries = async ({
   country = "",
   region = "",
+  fullText = false,
 }: {
   country: string;
   region?: Regions;
+  fullText?: boolean;
 }) => {
   if (region !== "") return loadCountriesByRegion({ region, country });
   if (country === "") {
@@ -42,6 +44,7 @@ export const loadCountries = async ({
   return await getCountriesByName({
     name: country,
     fields,
+    fullText,
   });
 };
 

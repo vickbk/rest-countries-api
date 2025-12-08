@@ -4,7 +4,8 @@ import { Icon } from "../components/common/icon";
 import { DetailsPlaceholder } from "../components/details/details-placeholder";
 import { Suspense } from "react";
 
-const Page = async () => {
+const Page = async ({ params }: { params: Promise<{ country: string }> }) => {
+  const { country } = await params;
   return (
     <div className="px-4 lg:px-0 grow flex flex-col items-start">
       <Link
@@ -15,7 +16,7 @@ const Page = async () => {
         <Icon name="arrow-left mr-4" /> Back
       </Link>
       <Suspense fallback={<DetailsPlaceholder />}>
-        <DetailsPage />
+        <DetailsPage country={country} />
       </Suspense>
     </div>
   );
