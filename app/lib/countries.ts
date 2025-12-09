@@ -27,24 +27,13 @@ export const loadCountries = async ({
   fullText = false,
   additionalFields = [],
 }: {
-  country: string;
+  country?: string;
   region?: Regions;
   fullText?: boolean;
   additionalFields?: (keyof Country)[];
 }) => {
-  if (region !== "") return loadCountriesByRegion({ region, country });
-  if (country === "") {
-    const [independant, dependant] = await Promise.all([
-      getCountries({
-        ...params,
-      }),
-      getCountries({
-        ...params,
-        independent: false,
-      }),
-    ]);
-    return [...(independant || []), ...(dependant || [])];
-  }
+  if (region !== "") return await loadCountriesByRegion({ region, country });
+  if (country === "") return await loadAllCountries();
   return await getCountriesByName({
     name: country,
     fields: [...fields, ...additionalFields],
@@ -78,4 +67,17 @@ export const loadCountriesByTag = async ({ codes }: { codes: Cca3Code[] }) => {
     fields,
   });
   return countries;
+};
+
+export const loadAllCountries = async () => {
+  const [independant, dependant] = await Promise.all([
+    getCountries({
+      ...params,
+    }),
+    getCountries({
+      ...params,
+      independent: false,
+    }),
+  ]);
+  return [...(independant || []), ...(dependant || [])];
 };
