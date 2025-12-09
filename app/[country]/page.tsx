@@ -3,6 +3,20 @@ import { DetailsPage } from "../components/details/details-page";
 import { Icon } from "../components/common/bi-icon";
 import { DetailsPlaceholder } from "../components/details/details-placeholder";
 import { Suspense } from "react";
+import { Metadata } from "next";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ country: string }>;
+}): Promise<Metadata> {
+  const { country } = await params;
+  return {
+    title: country,
+  };
+}
+
+// export const metadata = await generateMetaData()
 
 const Page = async ({ params }: { params: Promise<{ country: string }> }) => {
   const { country } = await params;
