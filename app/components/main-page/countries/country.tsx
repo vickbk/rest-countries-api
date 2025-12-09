@@ -17,7 +17,7 @@ export const Country = ({
   return (
     <article className="outstand rounded-lg flex flex-col justify-between shadow-2xl country-card relative">
       <Image
-        className="rounded-t-lg"
+        className="rounded-t-lg h-50 object-cover"
         src={flags.svg}
         width={1200}
         height={600}
