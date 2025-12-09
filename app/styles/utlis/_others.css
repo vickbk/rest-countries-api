@@ -17,3 +17,19 @@
     }
   }
 }
+
+.paging-suspense {
+  .paging-suspense__summary {
+    &::marker {
+      content: "";
+    }
+  }
+  .paging-suspense__container {
+    background-color: hsl(var(--background));
+    @apply absolute 
+    flex justify-center flex-wrap 
+    pb-4 gap-2 top-4 z-10
+    inset-x-0 md:inset-x-auto 
+    md:left-1/2 md:-translate-x-1/2;
+  }
+}
