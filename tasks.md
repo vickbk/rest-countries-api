@@ -18,9 +18,9 @@ REST_COUNTRIES_API_KEY=your_live_key_here
 
 ## 🔌 Phase 2: Updating the Server-Side Fetching Code
 
-- [ ] **Update Endpoint and Security Headers**
-- [ ] Locate your Next.js Server Component page (e.g., `src/app/page.tsx`).
-- [ ] Update the target URL string to the new endpoint: `https://api.restcountries.com/countries/v5`.
+- [x] **Update Endpoint and Security Headers**
+- [x] Locate your Next.js Server Component page (e.g., `.env.local`).
+- [x] Update the target URL string to the new endpoint: `https://api.restcountries.com/countries/v5`.
 - [ ] Pass the token securely inside the fetch options configuration:
 
 ```ts
