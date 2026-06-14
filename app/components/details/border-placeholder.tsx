@@ -1,4 +1,4 @@
-import { LoadingPlacehoder } from "../common/loading-placeholder";
+import { BorderCountryPlaceHolder } from "./border-coutry-placeholder";
 
 export const BorderPlaceholder = () => {
   return (
@@ -8,10 +8,7 @@ export const BorderPlaceholder = () => {
         {Array(4)
           .fill(null)
           .map((_, key) => (
-            <LoadingPlacehoder
-              key={key}
-              className="p-4 basis-20 grow outstand shadow"
-            />
+            <BorderCountryPlaceHolder key={key} />
           ))}
       </div>
     </>

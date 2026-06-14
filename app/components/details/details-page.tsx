@@ -24,6 +24,7 @@ export const DetailsPage = async ({ country }: { country: string }) => {
         "languages",
       ],
     })) as CountryDetailsType[]) || [];
+
   if (!selected) notFound();
   const { flag, names, borders } = selected;
 
