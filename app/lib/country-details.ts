@@ -51,7 +51,7 @@ export const getCountryDetails = ({
           .map(({ name }) => name)
           .join(", "),
       ],
-      ["Languages", languages.map((l) => l.name).join(", ")],
+      ["Languages", languages?.map((l) => l.name).join(", ")],
     ],
   });
   return { primaryDetails, moreDetails };
