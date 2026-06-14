@@ -6,7 +6,7 @@ import {
   restCountries,
 } from "@/infrastructure/countries";
 import {
-  Cca3Code,
+  Ccn3Code,
   Country,
   CountryPicker,
   Region,
@@ -33,7 +33,7 @@ export const loadCountries = async ({
   return await getAllCountries({ q: country, ...options });
 };
 
-export const loadCountriesByTag = async ({ code }: { code: Cca3Code }) => {
+export const loadCountriesByTag = async ({ code }: { code: Ccn3Code }) => {
   const { country, success, error } = await restCountries.getCountryByCode({
     alpha_3: code,
     fields,
