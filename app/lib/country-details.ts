@@ -38,7 +38,7 @@ export const getCountryDetails = ({
       ["population", readableNumber(population)],
       ["region", region],
       ["Sub Region", subregion as string],
-      ["capital", capitals?.join(", ") || ""],
+      ["capital", capitals.map((c) => c.name).join(", ") || ""],
     ],
   });
 
@@ -51,7 +51,7 @@ export const getCountryDetails = ({
           .map(({ name }) => name)
           .join(", "),
       ],
-      ["Languages", Object.values(languages || {}).join(", ")],
+      ["Languages", languages.map((l) => l.name).join(", ")],
     ],
   });
   return { primaryDetails, moreDetails };
