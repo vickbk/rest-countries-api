@@ -1,6 +1,6 @@
-import { SROnly } from "@shared/utils";
 import { detailCloser } from "../utils/details-helper";
 import { PagingButton } from "./paging-button";
+import { SROnly } from "./sr-only";
 
 export const PagingGapHolding = ({
   start,

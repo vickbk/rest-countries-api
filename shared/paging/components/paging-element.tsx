@@ -1,9 +1,8 @@
 "use client";
-import { SROnly } from "@shared/utils";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useEffect } from "react";
 import { PagingGapHolding } from "./page-holding";
 import { PagingButton } from "./paging-button";
+import { SROnly } from "./sr-only";
 
 export const Paging = ({
   page,
@@ -24,7 +23,8 @@ export const Paging = ({
     <ol className="p-4 gap-4 col-span-full flex flex-wrap justify-center items-center relative">
       {page !== 0 && (
         <PagingButton onClickFunction={() => updateFunction(page - 1)}>
-          <SROnly>Go to previous page</SROnly> <ChevronLeft />
+          <SROnly>Go to previous page</SROnly>{" "}
+          <i className="bi bi-chevron-left" />
         </PagingButton>
       )}
       <PagingButton
@@ -57,7 +57,7 @@ export const Paging = ({
       </PagingButton>
       {page < totalPages - 1 && (
         <PagingButton onClickFunction={() => updateFunction(page + 1)}>
-          <SROnly>Go to next page</SROnly> <ChevronRight />
+          <SROnly>Go to next page</SROnly> <i className="bi bi-chevron-right" />
         </PagingButton>
       )}
     </ol>

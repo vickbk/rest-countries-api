@@ -3,3 +3,4 @@
 @import "tailwindcss";
 @import "./main/";
 @import "./utlis/";
+@import "../../shared/paging/styles.css";
