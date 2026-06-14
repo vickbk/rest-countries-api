@@ -1,10 +1,10 @@
 "use client";
+import { Regions } from "@/app/lib/countries";
+import { updateSearchParams } from "@/app/lib/update-search-params";
 import { usePathname, useRouter } from "next/navigation";
+import { useEffect, useRef } from "react";
 import { Icon } from "../common/bi-icon";
 import { SROnly } from "../shared/SROnly";
-import { updateSearchParams } from "@/app/lib/update-search-params";
-import { useEffect, useRef } from "react";
-import { Regions } from "@/app/lib/countries";
 
 export const Filter = ({ region }: { region: Regions }) => {
   const regions = [
@@ -22,7 +22,7 @@ export const Filter = ({ region }: { region: Regions }) => {
 
   const valueChange = (value: string) => {
     replace(
-      updateSearchParams({ param: "region", value, pathname, reset: ["page"] })
+      updateSearchParams({ param: "region", value, pathname, reset: ["page"] }),
     );
     detailsElement.current?.removeAttribute("open");
   };
@@ -45,7 +45,7 @@ export const Filter = ({ region }: { region: Regions }) => {
         </span>
       </summary>
       <form
-        className="outstand filter__list shadow-2xl"
+        className="outstand filter__list shadow-2xl z-1"
         onInput={(e) => valueChange((e.target as HTMLInputElement).value)}
       >
         {regions.map((reg, key) => (
