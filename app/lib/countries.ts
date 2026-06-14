@@ -1,11 +1,11 @@
 "server only";
 
 import {
-  getCountries,
-  getCountriesByCodes,
-  getCountriesByName,
+  getAllCountries,
   getCountriesByRegion,
-} from "@yusifaliyevpro/countries";
+  restCountries,
+} from "@/infrastructure/countries";
+import { RestCountries } from "@yusifaliyevpro/countries";
 import {
   Cca3Code,
   Country,
@@ -18,66 +18,49 @@ export type Regions = Region | "";
 export type CountryType<T extends readonly (keyof Country)[] = []> =
   CountryPicker<T>;
 
-const fields = ["name", "population", "flags", "capital", "region"] as const;
+const fields = ["names", "population", "flag", "capitals", "region"] as const;
 const params = { independant: true, fields };
 
+const rest = new RestCountries({ apiKey: process.env.RESTCOUNTRIES_API_KEY! });
 export const loadCountries = async ({
   country = "",
   region = "",
-  fullText = false,
-  additionalFields = [],
+  ...options
 }: {
   country?: string;
   region?: Regions;
   fullText?: boolean;
   additionalFields?: (keyof Country)[];
 }) => {
-  if (region !== "") return await loadCountriesByRegion({ region, country });
-  if (country === "") return await loadAllCountries();
-  return await getCountriesByName({
-    name: country,
-    fields: [...fields, ...additionalFields],
-    fullText,
-  });
+  if (region !== "") return await getCountriesByRegion({ region, country });
+  return await getAllCountries({ q: country, ...options });
 };
 
-const loadCountriesByRegion = async ({
-  country = "",
-  region,
-}: {
-  country?: string;
-  region: Region;
-}) => {
-  const countries =
-    (await getCountriesByRegion({
-      region,
-      fields,
-    })) || [];
-
-  return countries.filter(
-    ({ name: { common, official } }) =>
-      common.toLowerCase().indexOf(country.toLowerCase()) !== -1 ||
-      official.toLowerCase().indexOf(country.toLowerCase()) !== -1
-  );
-};
-
-export const loadCountriesByTag = async ({ codes }: { codes: Cca3Code[] }) => {
-  const countries = await getCountriesByCodes({
-    codes,
+export const loadCountriesByTag = async ({ code }: { code: Cca3Code }) => {
+  const { country, success, error } = await restCountries.getCountryByCode({
+    alpha_3: code,
     fields,
   });
-  return countries;
+
+  if (success) return country;
+
+  throw error;
 };
 
 export const loadAllCountries = async () => {
   const [independant, dependant] = await Promise.all([
-    getCountries({
+    rest.getCountries({
       ...params,
     }),
-    getCountries({
+    rest.getCountries({
       ...params,
-      independent: false,
+      filters: {
+        classification: {
+          dependency: true,
+        },
+      },
     }),
   ]);
-  return [...(independant || []), ...(dependant || [])];
+
+  return [...(independant?.countries || []), ...(dependant?.countries || [])];
 };

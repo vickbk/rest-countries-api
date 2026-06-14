@@ -3,16 +3,16 @@ import { readableNumber } from "./number-converter";
 
 export type CountryDetailsType = CountryType<
   [
-    "name",
-    "flags",
-    "capital",
+    "names",
+    "flag",
+    "capitals",
     "population",
     "region",
     "borders",
     "subregion",
-    "tld",
+    "tlds",
     "currencies",
-    "languages"
+    "languages",
   ]
 >;
 
@@ -22,29 +22,29 @@ export const getCountryDetails = ({
   country: CountryDetailsType;
 }) => {
   const {
-    name,
+    names,
     population,
     region,
     subregion,
-    capital,
-    tld,
+    capitals,
+    tlds,
     currencies,
     languages,
   } = country;
 
   const primaryDetails = convertToNameValue({
     data: [
-      ["Native Name", Object.values(name.nativeName || {})[0]?.common || ""],
+      ["Native Name", Object.values(names.native || {})[0]?.common || ""],
       ["population", readableNumber(population)],
       ["region", region],
-      ["Sub Region", subregion || ""],
-      ["capital", capital?.join(", ") || ""],
+      ["Sub Region", subregion as string],
+      ["capital", capitals?.join(", ") || ""],
     ],
   });
 
   const moreDetails = convertToNameValue({
     data: [
-      ["Top Level Domain", tld?.join(", ") || ""],
+      ["Top Level Domain", tlds?.join(", ") || ""],
       [
         "Currencies",
         Object.values(currencies || {})

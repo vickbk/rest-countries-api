@@ -2,3 +2,5 @@ allowBuilds:
   "@parcel/watcher": false
   sharp: false
   unrs-resolver: true
+minimumReleaseAgeExclude:
+  - "@yusifaliyevpro/countries@5.1.2"
