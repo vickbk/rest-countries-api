@@ -23,7 +23,7 @@ const params = { independant: true, fields };
 
 const rest = new RestCountries({ apiKey: process.env.RESTCOUNTRIES_API_KEY! });
 export const loadCountries = async ({
-  country = "",
+  country,
   region = "",
   ...options
 }: {
