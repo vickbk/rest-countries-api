@@ -29,5 +29,6 @@ export async function getAllCountries({
       ...options,
     }),
   ]);
+
   return [...(independant.countries || []), ...(dependant.countries || [])];
 }
