@@ -4,13 +4,15 @@ import { RegionParams } from "../types";
 export async function getCountriesByRegion({
   country = "",
   region,
+  page = 0,
 }: RegionParams) {
+  const limit = 12;
   const { countries, success, error } =
     await restCountries.getCountriesByRegion({
       region,
-      fields: fields,
-      limit: 20,
-      offset: 1,
+      fields,
+      limit,
+      offset: page * limit,
     });
 
   if (!success) throw error;
