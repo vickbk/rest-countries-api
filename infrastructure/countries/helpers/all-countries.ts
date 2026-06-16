@@ -1,4 +1,4 @@
-import { Country } from "@yusifaliyevpro/countries";
+import { Country, CountryListResult } from "@yusifaliyevpro/countries";
 import { params, restCountries } from "../client";
 
 export async function getAllCountries({
@@ -46,11 +46,19 @@ export async function getAllCountries({
       ...(dependant.countries || []),
     ],
     meta: {
-      count: (iMeta?.count ?? 0) + (dMeta?.count ?? 0),
-      total: (iMeta?.total ?? 0) + (dMeta?.total ?? 0),
-      limit: (iMeta?.limit ?? 0) + (dMeta?.limit ?? 0),
+      count: addMeta(iMeta?.count, dMeta?.count),
+      total: addMeta(iMeta?.total, dMeta?.total),
+      limit: addMeta(iMeta?.limit, dMeta?.limit),
+      duration: addMeta(iMeta?.duration, dMeta?.duration),
+      more: iMeta?.more || dMeta?.more,
+      request_id: iMeta?.request_id ?? dMeta?.request_id,
     },
-  };
+  } as CountryListResult<
+    readonly ["names", "population", "flag", "capitals", "region"]
+  >;
+  return results;
+}
 
-  return results.countries;
+function addMeta(first = 0, second = 0) {
+  return first + second;
 }

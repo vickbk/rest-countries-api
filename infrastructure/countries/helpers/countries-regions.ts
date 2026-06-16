@@ -7,19 +7,18 @@ export async function getCountriesByRegion({
   page = 0,
 }: RegionParams) {
   const limit = 12;
-  const { countries, success, error } =
-    await restCountries.getCountriesByRegion({
-      region,
-      fields,
-      limit,
-      offset: page * limit,
-    });
+  const results = await restCountries.getCountriesByRegion({
+    region,
+    fields,
+    limit,
+    offset: page * limit,
+  });
 
-  if (!success) throw error;
   const countryFilter = country.toLowerCase();
-  return countries.filter(
+  results.countries = results.countries?.filter(
     ({ names: { common, official } }) =>
       common.toLowerCase().indexOf(countryFilter) !== -1 ||
       official.toLowerCase().indexOf(countryFilter) !== -1,
   );
+  return results;
 }
