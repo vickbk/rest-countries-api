@@ -1,6 +1,6 @@
 import { loadCountries, Regions } from "@/app/lib/countries";
 import { Country } from "./country";
-import { Paging } from "../paging";
+import { PagingWrapper } from "./paging-wrapper";
 
 const PAGESIZE = 12;
 
@@ -13,18 +13,21 @@ export const CountriesList = async ({
   page?: string;
   region: Regions;
 }) => {
-  const countries = (await loadCountries({ country, region })) || [];
-  const totalPages = Math.ceil(countries.length / PAGESIZE);
-  const countriesPage = countries.slice(
-    (+page - 1) * PAGESIZE,
-    +page * PAGESIZE
-  );
+  const {
+    success,
+    countries = [],
+    meta,
+  } = await loadCountries({ country, region });
+
+  const totalPages = Math.ceil((meta?.total ?? 0) / PAGESIZE);
+
+  if (!success) return null;
   return (
     <>
-      {countriesPage.map((country, key) => (
+      {countries.map((country, key) => (
         <Country key={key} country={country} />
       ))}
-      <Paging page={+page} totalPages={totalPages} />
+      <PagingWrapper page={+page} totalPages={totalPages} />
     </>
   );
 };

@@ -1,32 +1,38 @@
+import { CountryType } from "@/app/lib/countries";
+import { readableNumber } from "@/app/lib/number-converter";
 import Image from "next/image";
 import Link from "next/link";
 import { DetailElement } from "../../common/detail-element";
-import { CountryType } from "@/app/lib/countries";
-import { readableNumber } from "@/app/lib/number-converter";
+import { FlagPlaceholder } from "./flag-placeholder";
 
 export const Country = ({
-  country: { name, population, flags, capital, region },
+  country: { names, population, flag, capitals, region },
 }: {
-  country: CountryType<["name", "capital", "population", "region", "flags"]>;
+  country: CountryType<["names", "capitals", "population", "region", "flag"]>;
 }) => {
   const details = [
     ["population", readableNumber(population)],
     ["Region", region],
-    ["capital", (capital || []).join(", ")],
+    ["capital", (capitals || []).map((c) => c.name).join(", ")],
   ].map(([name, value]) => ({ name, value }));
+  const flagVal = flag.url_png || flag.url_png;
   return (
     <article className="outstand rounded-lg flex flex-col justify-between shadow-2xl country-card relative">
-      <Image
-        className="rounded-t-lg h-50 object-cover"
-        src={flags.svg}
-        width={1200}
-        height={600}
-        alt={flags.alt || `${name.common} country flag`}
-      />
+      {flagVal ? (
+        <Image
+          className="rounded-t-lg h-50 object-cover"
+          src={flagVal}
+          width={1200}
+          height={600}
+          alt={flag.description || `${names.common} country flag`}
+        />
+      ) : (
+        <FlagPlaceholder flag={flag} />
+      )}
       <section className="p-8">
         <h3 className="font-semibold text-xl mb-4">
-          <Link href={"/" + name.common} className="country-card__link">
-            {name.common} <span className="absolute inset-0"></span>
+          <Link href={"/" + names.common} className="country-card__link">
+            {names.common} <span className="absolute inset-0"></span>
           </Link>{" "}
         </h3>
         <ul className="grid gap-1">

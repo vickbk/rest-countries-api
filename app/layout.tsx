@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 import { Nunito_Sans } from "next/font/google";
-import "./styles/scss/global.scss";
-import "./styles/global.css";
-import "bootstrap-icons/font/bootstrap-icons.css";
-import { Header } from "./components/common/header";
 import { CommonContainer } from "./components/common/common-container";
+import { Header } from "./components/common/header";
+import "./styles/global.css";
+import "./styles/scss/global.scss";
 
 const nunitoSans = Nunito_Sans({
   variable: "--font-nunito-sans",
