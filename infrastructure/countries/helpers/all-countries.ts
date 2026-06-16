@@ -36,5 +36,21 @@ export async function getAllCountries({
     }),
   ]);
 
-  return [...(independant.countries || []), ...(dependant.countries || [])];
+  const iMeta = independant.meta;
+  const dMeta = dependant.meta;
+  const results = {
+    error: independant.error || dependant.error,
+    success: independant.success || dependant.success,
+    countries: [
+      ...(independant.countries || []),
+      ...(dependant.countries || []),
+    ],
+    meta: {
+      count: (iMeta?.count ?? 0) + (dMeta?.count ?? 0),
+      total: (iMeta?.total ?? 0) + (dMeta?.total ?? 0),
+      limit: (iMeta?.limit ?? 0) + (dMeta?.limit ?? 0),
+    },
+  };
+
+  return results.countries;
 }
