@@ -12,18 +12,21 @@ import { BorderPlaceholder } from "./border-placeholder";
 import { CountryDetails } from "./country-details";
 
 export const DetailsPage = async ({ country }: { country: string }) => {
-  const [selected] =
-    ((await loadCountries({
-      country,
-      fullText: true,
-      additionalFields: [
-        "borders",
-        "subregion",
-        "tlds",
-        "currencies",
-        "languages",
-      ],
-    })) as CountryDetailsType[]) || [];
+  const { success, countries } = await loadCountries({
+    country,
+    fullText: true,
+    additionalFields: [
+      "borders",
+      "subregion",
+      "tlds",
+      "currencies",
+      "languages",
+    ],
+  });
+
+  if (!success) return null;
+
+  const [selected] = countries as CountryDetailsType[];
 
   if (!selected) notFound();
   const { flag, names, borders } = selected;
