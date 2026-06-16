@@ -19,7 +19,7 @@ export const CountriesList = async ({
     meta,
   } = await loadCountries({ country, region });
 
-  const totalPages = meta?.total ?? 0 / PAGESIZE;
+  const totalPages = Math.ceil((meta?.total ?? 0) / PAGESIZE);
 
   if (!success) return null;
   return (

@@ -1,4 +1,8 @@
-import { Country, CountryListResult } from "@yusifaliyevpro/countries";
+import {
+  Country,
+  CountryListResult,
+  CountryPicker,
+} from "@yusifaliyevpro/countries";
 import { params, restCountries } from "../client";
 
 export async function getAllCountries({
@@ -38,16 +42,20 @@ export async function getAllCountries({
 
   const iMeta = independant.meta;
   const dMeta = dependant.meta;
+
+  const countries = combine(independant.countries, dependant.countries);
+
   const results = {
     error: independant.error || dependant.error,
     success: independant.success || dependant.success,
-    countries: [
-      ...(independant.countries || []),
-      ...(dependant.countries || []),
-    ],
+    countries,
     meta: {
-      count: addMeta(iMeta?.count, dMeta?.count),
-      total: addMeta(iMeta?.total, dMeta?.total),
+      count: countries.length,
+      total:
+        addMeta(iMeta?.total, dMeta?.total) -
+        ((independant.countries?.length ?? 0) +
+          (dependant.countries?.length ?? 0) -
+          countries.length),
       limit: addMeta(iMeta?.limit, dMeta?.limit),
       duration: addMeta(iMeta?.duration, dMeta?.duration),
       more: iMeta?.more || dMeta?.more,
@@ -61,4 +69,28 @@ export async function getAllCountries({
 
 function addMeta(first = 0, second = 0) {
   return first + second;
+}
+
+function combine(
+  dependent: CountryPicker<
+    readonly ["names", "population", "flag", "capitals", "region"]
+  >[] = [],
+  independent: CountryPicker<
+    readonly ["names", "population", "flag", "capitals", "region"]
+  >[] = [],
+) {
+  const seenNames = new Set<string>();
+  return [...dependent, ...independent].filter((country) => {
+    const nameKey =
+      typeof country.names === "object"
+        ? country.names.common
+        : country.names || country.names;
+
+    if (!nameKey || seenNames.has(nameKey)) {
+      return false; // Skip if name is missing or already captured
+    }
+
+    seenNames.add(nameKey);
+    return true;
+  });
 }
