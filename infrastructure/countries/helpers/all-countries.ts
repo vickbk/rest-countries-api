@@ -18,26 +18,42 @@ export async function getAllCountries({
   q = q || undefined;
   const limit = 12;
   const offset = limit * page;
-  const [independant, dependant] = await Promise.all([
-    restCountries.getCountries({
-      ...params,
-      limit,
-      ...options,
-      offset,
-      q,
-    }),
-    restCountries.getCountries({
-      ...params,
-      limit,
-      offset,
-      filters: {
-        classification: {
-          dependency: true,
-        },
-      },
-      q,
-      ...options,
-    }),
+  const request = {
+    limit,
+    offset,
+    q,
+    ...params,
+    ...options,
+  };
+  const [independant, dependant]: CountryListResult<
+    readonly ["names", "population", "flag", "capitals", "region"]
+  >[] = await Promise.all([
+    restCountries.getCountries(request),
+    offset > 60
+      ? restCountries.getCountries({
+          ...request,
+          filters: {
+            classification: {
+              dependency: true,
+            },
+          },
+        })
+      : Promise.resolve({
+          countries: [],
+          error: undefined,
+          success: true,
+          meta: {
+            total: 0,
+            count: 0,
+            offset: 0,
+            limit: 0,
+            more: false,
+            request_id: "",
+            duration: 0,
+          },
+        } as CountryListResult<
+          readonly ["names", "population", "flag", "capitals", "region"]
+        >),
   ]);
 
   const iMeta = independant.meta;
