@@ -24,16 +24,16 @@ export default nextConfig;
 
 Instead of writing a complex external abstraction wrapper, you can inject the caching directives directly inside your existing deduplication function block.
 
-- [ ] **Import Native Cache Utilities**
-- [ ] Pull `cacheTag` (and optionally `cacheLife` if you want to set custom expiry rules) from the core library:
+- [x] **Import Native Cache Utilities**
+- [x] Pull `cacheTag` (and optionally `cacheLife` if you want to set custom expiry rules) from the core library:
 
 ```ts
 import { cacheTag, cacheLife } from "next/cache";
 ```
 
-- [ ] **Refactor `getAllCountries` Execution Block**
-- [ ] Inject the `'use cache'` boundary directive at the absolute top of the function scope.
-- [ ] Declare your tracking tag string using `cacheTag()`.
+- [x] **Refactor `getAllCountries` Execution Block**
+- [x] Inject the `'use cache'` boundary directive at the absolute top of the function scope.
+- [x] Declare your tracking tag string using `cacheTag()`.
 
 ```ts
 export async function getAllCountries({

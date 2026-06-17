@@ -11,6 +11,7 @@ import {
   CountryPicker,
   Region,
 } from "@yusifaliyevpro/countries/types";
+import { cacheLife, cacheTag } from "next/cache";
 
 export type Regions = Region | "";
 
@@ -30,6 +31,9 @@ export const loadCountries = async ({
   additionalFields?: (keyof Country)[];
   page?: number;
 }) => {
+  "use cache";
+  cacheTag("countries");
+  cacheLife("weeks");
   if (region !== "")
     return await getCountriesByRegion({ region, country, ...options });
   return await getAllCountries({ q: country, ...options });
