@@ -66,9 +66,9 @@ export async function getAllCountries({
 
 ## 🎛️ Phase 3: Syncing the On-Demand Revalidation Channel
 
-- [ ] **Update Your Revalidation Webhook Handler**
-- [ ] Open your background clearing endpoint file (`src/app/api/revalidate/route.ts`).
-- [ ] Keep using the standard `revalidateTag` utility, but match it to your updated string key label:
+- [x] **Update Your Revalidation Webhook Handler**
+- [x] Open your background clearing endpoint file (`src/app/api/revalidate/route.ts`).
+- [x] Keep using the standard `revalidateTag` utility, but match it to your updated string key label:
 
 ```ts
 import { revalidateTag } from "next/cache";
