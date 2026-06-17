@@ -29,7 +29,7 @@ export async function getAllCountries({
     readonly ["names", "population", "flag", "capitals", "region"]
   >[] = await Promise.all([
     restCountries.getCountries(request),
-    offset > 60
+    offset < 60
       ? restCountries.getCountries({
           ...request,
           filters: {
