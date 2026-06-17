@@ -30,7 +30,8 @@ export const loadCountries = async ({
   additionalFields?: (keyof Country)[];
   page?: number;
 }) => {
-  if (region !== "") return await getCountriesByRegion({ region, country });
+  if (region !== "")
+    return await getCountriesByRegion({ region, country, ...options });
   return await getAllCountries({ q: country, ...options });
 };
 
