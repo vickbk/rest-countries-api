@@ -1,11 +1,12 @@
+"use cache";
+import { Regions } from "@/app/lib/countries";
 import { Suspense } from "react";
+import { CountriesList } from "./countries/countries-list";
 import { CountriesPlaceHolder } from "./countries/country-placeholder";
 import { Filter } from "./filter";
 import { Search } from "./search";
-import { CountriesList } from "./countries/countries-list";
-import { Regions } from "@/app/lib/countries";
 
-export const HomePage = (props: {
+export const HomePage = async (props: {
   country?: string;
   region: Regions;
   page?: string;

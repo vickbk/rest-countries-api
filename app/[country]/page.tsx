@@ -16,8 +16,6 @@ export async function generateMetadata({
   };
 }
 
-// export const metadata = await generateMetaData()
-
 const Page = async ({ params }: { params: Promise<{ country: string }> }) => {
   const { country } = await params;
   return (
