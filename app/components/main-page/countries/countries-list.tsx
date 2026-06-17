@@ -7,7 +7,7 @@ const PAGESIZE = 12;
 export const CountriesList = async ({
   country = "",
   region = "",
-  page = "1",
+  page = "0",
 }: {
   country?: string;
   page?: string;
@@ -27,7 +27,7 @@ export const CountriesList = async ({
       {countries.map((country, key) => (
         <Country key={key} country={country} />
       ))}
-      <PagingWrapper page={+page} totalPages={totalPages} />
+      <PagingWrapper page={+page || 1} totalPages={totalPages} />
     </>
   );
 };
