@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Nunito_Sans } from "next/font/google";
+import { Suspense } from "react";
 import { CommonContainer } from "./components/common/common-container";
 import { Header } from "./components/common/header";
 import "./styles/global.css";
@@ -29,9 +30,11 @@ export default function RootLayout({
       <body className={`${nunitoSans.variable} antialiased`}>
         <Header />
         <main className="grow flex flex-col">
-          <CommonContainer className="grow flex flex-col w-full">
-            {children}
-          </CommonContainer>
+          <Suspense>
+            <CommonContainer className="grow flex flex-col w-full">
+              {children}
+            </CommonContainer>
+          </Suspense>
         </main>
       </body>
     </html>
