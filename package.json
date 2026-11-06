@@ -11,21 +11,21 @@
   "dependencies": {
     "@yusifaliyevpro/countries": "^5.2.6",
     "bootstrap-icons": "^1.13.2",
-    "next": "16.4.3",
+    "next": "16.4.4",
     "react": "19.3.1",
     "react-dom": "19.3.1",
     "use-debounce": "^10.1.1"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4.3.3",
-    "@types/node": "^26.6.5",
+    "@tailwindcss/postcss": "^4.3.4",
+    "@types/node": "^26.6.6",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19",
     "babel-plugin-react-compiler": "1.0.0",
-    "eslint": "^10.13.0",
-    "eslint-config-next": "16.4.3",
-    "sass": "^1.106.1",
-    "tailwindcss": "^4.3.3",
+    "eslint": "^10.14.0",
+    "eslint-config-next": "16.4.4",
+    "sass": "^1.107.1",
+    "tailwindcss": "^4.3.4",
     "typescript": "^7"
   }
 }
